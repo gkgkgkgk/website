@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "fs": "^0.0.1-security",
+    "geotiff": "^2.0.7",
     "next": "latest",
+    "noisejs": "^2.1.0",
     "react": "latest",
     "react-dom": "latest",
     "three": "^0.157.0"
@@ -20,5 +23,10 @@
     "eslint-config-next": "latest",
     "postcss": "latest",
     "tailwindcss": "latest"
+  }, 
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }
