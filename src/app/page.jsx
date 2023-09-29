@@ -108,6 +108,7 @@ export default function Home() {
   ];
 
   return (
+    <div className='bg'>
     <div className="home">
       <TopCanvas></TopCanvas>
       <div className='topContainer'>
@@ -146,7 +147,10 @@ export default function Home() {
           <button className='resumeButton'>Download Resume PDF 📜</button>
         </a>
       </div>
-      <ThreeDCanvas></ThreeDCanvas>
+    </div>
+    <div className='bottomDiv'>
+        <ThreeDCanvas></ThreeDCanvas>
+      </div>
     </div>
   )
 }

@@ -14,7 +14,7 @@ const ThreeDCanvas = () => {
     const canvas = document.getElementById('canvas');
     const container = document.getElementById('three-container');
     // Create a renderer
-    const renderer = new THREE.WebGLRenderer({ canvas });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, canvas });
 
     const setRendererSize = () => {
       const width = container.clientWidth;
@@ -27,7 +27,7 @@ const ThreeDCanvas = () => {
     // Call the function initially and when the window is resized
     setRendererSize();
 
-    // renderer.setClearColor(0x000000, 0); // Color, Alpha
+    renderer.setClearColor(0x000000, 0.5); // Color, Alpha
 
     // Create a cube
     const geometry = new THREE.BoxGeometry();
@@ -50,6 +50,8 @@ const ThreeDCanvas = () => {
 
     const handleResize = () => {
       setRendererSize();
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
     };
 
     // Handle window resize
