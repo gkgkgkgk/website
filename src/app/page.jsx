@@ -7,6 +7,7 @@ import ResumeItem from './components/ResumeItem';
 import Education from './components/Education';
 import SkillIcon from './components/SkillIcon';
 import TopCanvas from './components/TopCanvas';
+import ThreeDCanvas from './components/ThreeDCanvas';
 
 export default function Home() {
   const scrollToElement = () => {
@@ -145,6 +146,7 @@ export default function Home() {
           <button className='resumeButton'>Download Resume PDF 📜</button>
         </a>
       </div>
+      <ThreeDCanvas></ThreeDCanvas>
     </div>
   )
 }

@@ -153,8 +153,6 @@ const TopCanvas = (props) => {
         // Calculate the start and end points of the shooting star
         const startX = x - starLength * directionX;
         const startY = y - starLength * directionY;
-        const endX = x + starLength * directionX;
-        const endY = y + starLength * directionY;
       
         // Create a gradient for the shooting star's tail (you can customize colors)
         const gradient = ctx.createLinearGradient(startX, startY, x, y);
