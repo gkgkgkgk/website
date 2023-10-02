@@ -112,12 +112,16 @@ export default function Home() {
     <div className="home">
       <TopCanvas></TopCanvas>
       <div className='topContainer'>
-        <Text size="small" text="Hi, my name is"></Text>
-        <Text size="big" text="GAVRI KEPETS"></Text>
-        <CircleImage img="gavri.jpg"></CircleImage>
-        <Text size="small" text="I am currently a Master's student in Electrical and Computer Engineering at The Cooper Union. I love computer graphics, simulations, game development, and all things engineering."></Text>
+        <Text size="small" text="Hi, my name is" className="hi"></Text>
+        <Text size="big" text="GAVRI KEPETS" className="name"></Text>
+        <CircleImage img="gavri.jpg" className='photo'></CircleImage>
+        <Text className="desc" size="small" text="I am currently a Master's student in Electrical and Computer Engineering at The Cooper Union. I love computer graphics, simulations, game development, and all things engineering."></Text>
         <div className="resumeButtonDiv" style={{paddingTop: '10vh'}}>
             <Button class="resumeButton" text="▼ View my Resume ▼" onClick={scrollToElement}></Button>
+            <a href={"resume_gkepets.pdf"} download={"resume_gkepets.pdf"} >
+              <button className='dlResumeButton'>📜 Download Resume PDF 📜</button>
+            </a>
+            {/* <Button class="dlResumeButton" text="📜 Download Resume 📜" onClick={scrollToElement}></Button> */}
         </div>
       </div>
       
@@ -138,13 +142,13 @@ export default function Home() {
         <hr style={{width: "100%", margin: "20px"}}></hr>
         <p>PB*: Preference-Based Path-Planning for Autonomous Robots: (<a href="https://pathplanning.online/">https://pathplanning.online</a>)</p>
         <div className='smallGap'></div>
-        <div style={{display: 'flex', justifyContent: "space-around", width: "100%"}}>
+        <div className='links' style={{display: 'flex', justifyContent: "space-around"}}>
           <a href="https://www.github.com/gkgkgkgk"><SkillIcon img="logos/github.png"></SkillIcon></a>
           <a href="https://www.linkedin.com/in/gabriel-kepets-624076143/"><SkillIcon img="logos/linkedin.png"></SkillIcon></a>
         </div>
         <div className='smallGap'></div>
         <a href={"resume_gkepets.pdf"} download={"resume_gkepets.pdf"}>
-          <button className='resumeButton'>Download Resume PDF 📜</button>
+          <button className='resumeButton'>📜 Download Resume PDF 📜</button>
         </a>
       </div>
     </div>
