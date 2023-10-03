@@ -27,7 +27,7 @@ const ResumeItem = (props) => {
     return (<div>
         {props.jobs.map((job, i) => {
             return (<div className="resumeItem" key={i}>
-                <CompanyName name={job.company} logoSrc={job.logo}></CompanyName>
+                <CompanyName name={job.company} logoSrc={job.logo} link={job.link}></CompanyName>
                 <p className="location">{job.location}</p>
                 {job.experiences.map((item, i) => {
                     return <Experience experience={item} key={i}></Experience>

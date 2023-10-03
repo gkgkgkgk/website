@@ -43,6 +43,7 @@ export default function Home() {
       company: "Bluestamp Engineering",
       location: "Remote",
       logo: "logos/bse.png",
+      link: "https://bluestampengineering.com/",
       experiences: [
         {
           "time": "Summer 2021 - Spring 2022",
@@ -64,6 +65,7 @@ export default function Home() {
       company: "Autofleet",
       location: "Tel Aviv, Israel",
       logo: "logos/autofleet.png",
+      link: "https://autofleet.io/",
       experiences: [
         {
           "time": "October 2018 - April 2019",
@@ -79,6 +81,7 @@ export default function Home() {
       company: "BGC Partners",
       location: "NYC, NY",
       logo: "logos/bgc.png",
+      link: "https://www.bgcg.com/",
       experiences: [
         {
           "time": "Summer 2019",
