@@ -67,7 +67,7 @@ export default function Home() {
       experiences: [
         {
           "time": "October 2018 - April 2019",
-          position: "Full Stack Developer",
+          position: "Full Stack Developer Co-Op",
           description: [
             "Developed an adapter and improved changes to the core codebase to allow integration between Autofleet services and a large ride sharing company in preparation for a pilot. (Node.js / Kubernetes / MySQL / RabbitMQ)",
             "Worked closely with the CEO, CTO as well as the other developers to prepare the company for product launch"
@@ -82,7 +82,7 @@ export default function Home() {
       experiences: [
         {
           "time": "Summer 2019",
-          position: "Full Stack Developer",
+          position: "Full Stack Developer Intern",
           description: [
             "Introduced and developed an agile workflow with continuous integration, deployment with Docker / Kubernetes support for application codebases. (Java / Node.js / Git / Jenkins / Docker / Kubernetes)",
             "Developed a new launchpad for FENICS, an electronic trading platform. The new launchpad integrates real time market data, news, and streamlines the user experience when launching the trading applications. (Node.js / React.js)"
@@ -90,7 +90,7 @@ export default function Home() {
         },
         {
           "time": "Summer 2018",
-          position: "Developer / QA Engineer",
+          position: "Developer / QA Engineer Intern",
           description: [
             "Expanded automated GUI test frameworks for FENICS UST (US Treasury trading platform) with interactive data visualization for test framework results. (Java, ELK Stack)",
             "Developed a new automated integration test framework for verifying trade data between Front and Middle Office services"
@@ -98,7 +98,7 @@ export default function Home() {
         },
         {
           "time": "Summer 2017",
-          position: "Backend Developer",
+          position: "Backend Developer Intern",
           description: [
             "Developed a multi-asset class transaction netting engine. Resulting code was put into production. (Java)"
           ]
