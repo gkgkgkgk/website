@@ -46,7 +46,7 @@ export default function Home() {
       experiences: [
         {
           "time": "Summer 2021 - Spring 2022",
-          position: "Director",
+          position: "Program Director",
           description: [
             "Coordinated enrollment, procurement and distribution of equipment for 125 students. Managed a team of 11 instructors."
           ]
@@ -55,7 +55,7 @@ export default function Home() {
           "time": "Summer 2020",
           position: "Instructor",
           description: [
-            "Guided students through electrical engineering and soware development projects. Taught students and managed projects involving numerous technologies such as Arduino, Raspberry Pi, Unity3D, and more."
+            "Guided multiple classes of students (approximately four students per class) through electrical engineering and soware development projects. Taught students and managed projects involving numerous technologies such as Arduino, Raspberry Pi, Unity3D, and more."
           ]
         }
       ]
@@ -121,7 +121,6 @@ export default function Home() {
             <a href={"resume_gkepets.pdf"} download={"resume_gkepets.pdf"} >
               <button className='dlResumeButton'>📜 Download Resume PDF 📜</button>
             </a>
-            {/* <Button class="dlResumeButton" text="📜 Download Resume 📜" onClick={scrollToElement}></Button> */}
         </div>
       </div>
       
