@@ -155,7 +155,7 @@ export default function Home() {
       </div>
     </div>
     <div className='bottomDiv'>
-        <ThreeDCanvas></ThreeDCanvas>
+        
       </div>
     </div>
   )
