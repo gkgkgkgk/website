@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "color2k": "^2.0.2",
     "fs": "^0.0.1-security",
     "geotiff": "^2.0.7",
     "next": "^13.3.4",

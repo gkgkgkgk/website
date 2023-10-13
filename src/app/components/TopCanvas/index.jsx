@@ -128,7 +128,17 @@ const TopCanvas = (props) => {
       const deltaTime = (timestamp - lastTimestamp) / 1000; // Convert to seconds
       lastTimestamp = timestamp;
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // ctx.fillStyle = "green"
+      // ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const skyGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      skyGradient.addColorStop(0, "#000000");
+      skyGradient.addColorStop(0.2, "#0c1d25");
+      skyGradient.addColorStop(0.5, "#37379a");
+      skyGradient.addColorStop(0.65, "#bd413f");
+      skyGradient.addColorStop(1, "#f39f3f"); 
+      ctx.fillStyle = skyGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (const star of stars) {
         ctx.beginPath();
@@ -148,13 +158,11 @@ const TopCanvas = (props) => {
 
       if (shootingStar != null) {
         const { x, y, directionX, directionY } = shootingStar;
-        const starLength = 75 + Math.random() * 50; // Length of the shooting star
+        const starLength = 75 + Math.random() * 50;
       
-        // Calculate the start and end points of the shooting star
         const startX = x - starLength * directionX;
         const startY = y - starLength * directionY;
       
-        // Create a gradient for the shooting star's tail (you can customize colors)
         const gradient = ctx.createLinearGradient(startX, startY, x, y);
         gradient.addColorStop(1, "#ffffff"); // Start color
         gradient.addColorStop(0, "transparent"); // End color (transparent)
@@ -163,14 +171,13 @@ const TopCanvas = (props) => {
         ctx.moveTo(startX, startY);
         ctx.lineTo(x, y);
         ctx.strokeStyle = gradient;
-        ctx.lineWidth = 5; // Adjust line width as needed
+        ctx.lineWidth = 5;
         ctx.stroke();
         ctx.closePath();
       
-        // Draw a small circle at the tip of the shooting star (you can customize the size)
         ctx.beginPath();
         ctx.arc(x, y, 3, 0, 2 * Math.PI);
-        ctx.fillStyle = "#ffffff"; // Circle color
+        ctx.fillStyle = "#ffffff";
         ctx.fill();
         ctx.closePath();
       }
