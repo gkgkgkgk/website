@@ -126,7 +126,7 @@ const BottomCanvas = (props) => {
       const deltaTime = (timestamp - lastTimestamp) / 1000;
       lastTimestamp = timestamp;
       fillSky();
-      // drawMountains();
+      drawMountains();
 
       requestId = requestAnimationFrame(draw);
     };
