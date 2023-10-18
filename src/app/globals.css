@@ -2,20 +2,217 @@
 @tailwind components;
 @tailwind utilities;
 
-.main {
-    height: 100vh;
+/*********** TOP PAGE ***********/
+
+.topContainer {
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    min-height: 100vh;
+    position: relative;    
 }
 
+.hi {
+    padding-top: 15vh;
+}
+
+.desc {
+    /* padding-top: 15vh; */
+    max-width: 700px;
+}
+
+.resumeButton {
+    border: 2px solid #004497;
+    border-radius: 50px;
+    padding: 10px 20px;
+    -webkit-tap-highlight-color: transparent;
+    transition: 0.5s cubic-bezier(0, 1, 0.7, 1.25);
+    background-color: rgba(0,0,0,0);
+    font-weight: 700;
+}
+
+.dlResumeButton {
+    margin-top: 10px;
+    border-radius: 25px;
+    color: rgb(223, 223, 223);
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    -webkit-tap-highlight-color: transparent;
+    transition: 0.5s cubic-bezier(0, 1, 0.7, 1.25);
+    font-weight: 700;
+}
+
+
+.resumeButton:active {
+    border: 2px solid #0079fa;
+    background-color: rgba(255,255,255,0.25);
+    border-radius: 50px;
+    padding: 10px 20px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.resumeButton:hover {
+    border: 2px solid #0079fa;
+    font-size: 1.15rem;
+    background-color: rgba(255,255,255,0.35);
+    border-radius: 50px;
+    padding: 10px 20px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dlResumeButton:active {
+    background-color: rgba(255,255,255,0.25);
+    border-radius: 50px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.dlResumeButton:hover {
+    background-color: rgba(255,255,255,0.35);
+    font-size: 0.85rem;
+}
+
+/*********** RESUME ***********/
+
 .resume {
+    padding-top: 2.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 2rem;
+}
+
+.resume > div {
+    width: 50%;
+    /* max-width: 80%; */
+}
+
+.resumeItem {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.companyName {
+    display: flex;
+    align-items: center;
+    justify-items: flex-start;
+    margin-top: 10px;
+}
+
+.company {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.companyLogo {
+    height: 2rem;
+    margin-left: 10px;
+}
+
+.location {
+    font-style: italic;
+}
+
+.experience {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 0px 10px;
+}
+
+.links{
+    width: 50%;
+}
+
+.descriptionList {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.expandable-description {
+    /* overflow: hidden; */
+    max-height: 50px;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.expandable-description.expanded {
+    /* overflow: hidden; */
+    max-height: 500px;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.viewDetails {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.degree {
+    font-size: 1rem;
+    padding-top: 10px;
+}
+
+.classes {
+    font-style: italic;
+}
+
+.skillGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.linkCompany {
+    transition: 0.25s ease-in-out;
+}
+
+.linkCompany:hover {
+    color: grey;
+}
+
+/*********** GENERAL RULES ***********/
+
+.home {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 20px;
+    height: auto;
+    width: 100%;
+    color: white;
+    line-height: 3rem;
     display: flex;
     flex-direction: column;
 }
 
-.canvasContainer {
-    position: absolute;
-    z-index: -1;
+.smallFont {
+    font-size: 1rem;
+    line-height: 1.75rem;
 }
+
+.mediumFont {
+    font-size: 2rem;
+}
+
+.bigFont {
+    font-size: 3rem;
+}
+
+.fullScreenDiv {
+    height: 100vh;
+    display: flex;
+}
+
+.smallGap {
+    min-height: 1rem;
+}
+
+.gap {
+    min-height: 2rem;
+}
+
 
 canvas {
     z-index: -1;

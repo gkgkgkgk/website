@@ -114,21 +114,49 @@ export default function Home() {
 
   return (
     <div className='parent'>
-      {/* <div className='canvasContainer'> */}
-        <Canvas></Canvas>
-      {/* </div> */}
-      <div className="main">
-        hi, im gavri
+      <Canvas></Canvas>
+      <div className='home'>
+      <div className='topContainer'>
+        <Text size="small" text="Hi, my name is" className="hi"></Text>
+        <Text size="big" text="GAVRI KEPETS" className="name"></Text>
+        <CircleImage img="gavri.jpg" className='photo'></CircleImage>
+        <Text className="desc" size="small" text="I am currently a Master's student in Electrical and Computer Engineering at The Cooper Union. I love computer graphics, simulations, game development, and all things engineering."></Text>
+        <div className="resumeButtonDiv" style={{paddingTop: '10vh'}}>
+            <Button class="resumeButton" text="▼ View my Resume ▼" onClick={scrollToElement}></Button>
+            <a href={"resume_gkepets.pdf"} download={"resume_gkepets.pdf"} >
+              <button className='dlResumeButton'>📜 Download Resume PDF 📜</button>
+            </a>
+        </div>
       </div>
-      <div className="resume">
-        <p>resume goes here.</p>
-        <p>resume goes here.</p>
-        <p>resume goes here.</p>
-        <p>resume goes here.</p>
-        <p>resume goes here.</p>
+      <div className='resume' id='resume'>
+        <Text size="medium" text="Education and Skills"></Text>
+        <hr style={{width: "100%", margin: "20px"}}></hr>
+        <div>
+          <Education></Education>
+        </div>
+        <div className='gap'></div>
+        <Text size="medium" text="Experience"></Text>
+        <hr style={{width: "100%", margin: "20px"}}></hr>
+        <div>
+          <ResumeItem jobs={jobs}></ResumeItem>
+        </div>
+        <div className='gap'></div>
+        <Text size="medium" text="Projects and Links"></Text>
+        <hr style={{width: "100%", margin: "20px"}}></hr>
+        <p>PB*: Preference-Based Path-Planning for Autonomous Robots: (<a href="https://pathplanning.online/">https://pathplanning.online</a>)</p>
+        <div className='smallGap'></div>
+        <div className='links' style={{display: 'flex', justifyContent: "space-around"}}>
+          <a href="https://www.github.com/gkgkgkgk"><SkillIcon img="logos/github.png"></SkillIcon></a>
+          <a href="https://www.linkedin.com/in/gabriel-kepets-624076143/"><SkillIcon img="logos/linkedin.png"></SkillIcon></a>
+        </div>
+        <div className='smallGap'></div>
+        <a href={"resume_gkepets.pdf"} download={"resume_gkepets.pdf"}>
+          <button className='resumeButton'>📜 Download Resume PDF 📜</button>
+        </a>
       </div>
-      <div className="main">
+      <div className="fullScreenDiv">
         
+      </div>
       </div>
     </div>
   )
