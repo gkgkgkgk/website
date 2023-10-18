@@ -9,6 +9,7 @@ import SkillIcon from './components/SkillIcon';
 import TopCanvas from './components/TopCanvas';
 import ThreeDCanvas from './components/ThreeDCanvas';
 import BottomCanvas from './components/BottomCanvas';
+import Canvas from './components/Canvas';
 
 export default function Home() {
   const scrollToElement = () => {
@@ -113,9 +114,9 @@ export default function Home() {
 
   return (
     <div className='parent'>
-      <div className='canvasContainer'>
-        <canvas/>
-      </div>
+      {/* <div className='canvasContainer'> */}
+        <Canvas></Canvas>
+      {/* </div> */}
       <div className="main">
         hi, im gavri
       </div>
