@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import {fromBlob} from 'geotiff'
 import { darken, lighten } from 'color2k';
 
-const BottomCanvas = (props) => {
+const Canvas = (props) => {
   const canvasRef = useRef(null);
 
   let stars = [];
@@ -213,4 +213,4 @@ const BottomCanvas = (props) => {
   );
 };
 
-export default BottomCanvas;
+export default Canvas;

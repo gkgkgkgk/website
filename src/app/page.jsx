@@ -6,11 +6,7 @@ import CircleImage from './components/CircleImage'
 import ResumeItem from './components/ResumeItem';
 import Education from './components/Education';
 import SkillIcon from './components/SkillIcon';
-import TopCanvas from './components/TopCanvas';
-import ThreeDCanvas from './components/ThreeDCanvas';
-import BottomCanvas from './components/BottomCanvas';
-import Canvas from './components/Canvas';
-
+import NewCanvas from './components/NewCanvas';
 export default function Home() {
   const scrollToElement = () => {
     const element = document.getElementById('resume');
@@ -114,7 +110,7 @@ export default function Home() {
 
   return (
     <div className='parent'>
-      <Canvas></Canvas>
+      <NewCanvas position="top"></NewCanvas>
       <div className='home'>
       <div className='topContainer'>
         <Text size="small" text="Hi, my name is" className="hi"></Text>
@@ -155,9 +151,9 @@ export default function Home() {
         </a>
       </div>
       <div className="fullScreenDiv">
-        
       </div>
       </div>
+      <NewCanvas position="bottom"></NewCanvas>
     </div>
   )
 }
