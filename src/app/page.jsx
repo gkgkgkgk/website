@@ -7,6 +7,7 @@ import ResumeItem from './components/ResumeItem';
 import Education from './components/Education';
 import SkillIcon from './components/SkillIcon';
 import NewCanvas from './components/NewCanvas';
+import NewCanvasBottom from './components/NewCanvasBottom';
 export default function Home() {
   const scrollToElement = () => {
     const element = document.getElementById('resume');
@@ -111,7 +112,7 @@ export default function Home() {
   return (
     <div className='parent'>
       <NewCanvas position="top"></NewCanvas>
-      <div className='home'>
+      <div className='home' id="home">
       <div className='topContainer'>
         <Text size="small" text="Hi, my name is" className="hi"></Text>
         <Text size="big" text="GAVRI KEPETS" className="name"></Text>
@@ -153,7 +154,6 @@ export default function Home() {
       <div className="fullScreenDiv">
       </div>
       </div>
-      <NewCanvas position="bottom"></NewCanvas>
     </div>
   )
 }

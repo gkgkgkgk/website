@@ -5,32 +5,32 @@ const Canvas = (props) => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    var paperScope2 = new paper.PaperScope();
-    paperScope2.setup(canvasRef.current);
+    var paperScope1 = new paper.PaperScope();
+    paperScope1.setup(canvasRef.current);
 
       let stars = [];
 
       let shootingStar = { starDot: null, x:0, y:0, directionX:0, directionY:0, speed:0 };
       let lastTimestamp = 0;
 
-      let backgroundRect = new paperScope2.Path.Rectangle(
-        paperScope2.view.bounds.topLeft,
-        paperScope2.view.bounds.bottomRight
+      let backgroundRect = new paperScope1.Path.Rectangle(
+        paperScope1.view.bounds.topLeft,
+        paperScope1.view.bounds.bottomRight
       );
       backgroundRect.fillColor = "black";
 
       const generateRandomStar = () => {
-        const x = Math.random() * paperScope2.view.bounds.width;
-        const y = Math.random() * Math.pow(paperScope2.view.bounds.height, 0.95);
+        const x = Math.random() * paperScope1.view.bounds.width;
+        const y = Math.random() * Math.pow(paperScope1.view.bounds.height, 0.95);
         const radius = Math.random() * 2;
         const color = getRandomColor();
         const targetColor = color;
         const targetRadius = radius;
 
-        const star = new paperScope2.Path.Circle(new paperScope2.Point(x, y), radius);
+        const star = new paperScope1.Path.Circle(new paperScope1.Point(x, y), radius);
         star.fillColor = color;
 
-        stars.push({ star, x, y, targetColor, targetRadius });
+        stars.push({ star, targetColor, targetRadius });
       };
 
       const generateShootingStar = () => {
@@ -41,20 +41,20 @@ const Canvas = (props) => {
 
           switch (randSide) {
               case 0: // Top side
-                  x = Math.random() * paperScope2.view.bounds.width;
+                  x = Math.random() * paperScope1.view.bounds.width;
                   y = 0;
                   directionY = 1;
                   directionX = Math.random() * 2 - 1;
               break;
               case 1: // Right side
-                  x = paperScope2.view.bounds.width;
-                  y = Math.random() * paperScope2.view.bounds.height;
+                  x = paperScope1.view.bounds.width;
+                  y = Math.random() * paperScope1.view.bounds.height;
                   directionX = -1;
                   directionY = Math.random() * 2 - 1;
               break;
               case 2: // Bottom side
                   x = 0;
-                  y = Math.random() * paperScope2.view.bounds.height;
+                  y = Math.random() * paperScope1.view.bounds.height;
                   directionX = 1;
                   directionY = Math.random() * 2 - 1;
               break;
@@ -85,45 +85,34 @@ const Canvas = (props) => {
           blue = c;
         }
 
-        return new paperScope2.Color(red / 255, green / 255, blue / 255);
+        return new paperScope1.Color(red / 255, green / 255, blue / 255);
       };
 
       const resizeCanvas = () => {
-        try {
-          const pixelRatio = window.devicePixelRatio || 1;
-          const width = canvasRef.current.parentNode.clientWidth;
-          const height = canvasRef.current.parentNode.clientHeight;
-        
-          // console.log(width, height, pixelRatio);
-          // paperScope2.view.viewSize = new paperScope2.Size(
-          //   Math.floor(width * pixelRatio), Math.floor(height * pixelRatio)
-          // );
-
-          // canvasRef.current.width = width;
-          // canvasRef.current.height = height;
-        } catch (error) {
-          console.error("An error occurred:", error);
-        }
-
-        
-        // console.log(canvasRef)
-        // backgroundRect.bounds.size = paperScope2.view.size
+        console.log(canvasRef)
+        paperScope1.view.viewSize = new paperScope1.Size(
+          window.innerWidth,
+          window.innerHeight
+          // canvasRef.current.parentElement.width,
+          // canvasRef.current.parentElement.height
+        );
+        backgroundRect.bounds.size = paperScope1.view.size
       };
 
       const fillSky = () => {
-        const skyGradient = new paperScope2.Path.Rectangle(
-          paperScope2.view.bounds.topLeft,
-          paperScope2.view.bounds.bottomRight
+        const skyGradient = new paperScope1.Path.Rectangle(
+          paperScope1.view.bounds.topLeft,
+          paperScope1.view.bounds.bottomRight
         );
         skyGradient.fillColor = {
           gradient: {
             stops: [
-              [new paperScope2.Color(0, 0, 0), 0],
-              [new paperScope2.Color(12 / 255, 29 / 255, 37 / 255), 0.2],
-              [new paperScope2.Color(55 / 255, 55 / 255, 154 / 255), 0.75],
-              [new paperScope2.Color(121 / 255, 163 / 255, 236 / 255), 0.85],
-              [new paperScope2.Color(255 / 255, 232 / 255, 178 / 255), 0.9],
-              [new paperScope2.Color(243 / 255, 159 / 255, 63 / 255), 1],
+              [new paperScope1.Color(0, 0, 0), 0],
+              [new paperScope1.Color(12 / 255, 29 / 255, 37 / 255), 0.2],
+              [new paperScope1.Color(55 / 255, 55 / 255, 154 / 255), 0.75],
+              [new paperScope1.Color(121 / 255, 163 / 255, 236 / 255), 0.85],
+              [new paperScope1.Color(255 / 255, 232 / 255, 178 / 255), 0.9],
+              [new paperScope1.Color(243 / 255, 159 / 255, 63 / 255), 1],
             ],
             radial: false,
           },
@@ -131,8 +120,6 @@ const Canvas = (props) => {
       };
 
       const animateStar = (star, deltaTime) => {
-        var scrollPosition = document.body.scrollTop;
-
         if (Math.abs(star.star.bounds.width - star.targetRadius * 2) < 0.05) {
           if (Math.random() < 0.075) {
             star.targetRadius = Math.random() * 2;
@@ -142,8 +129,6 @@ const Canvas = (props) => {
           const newRadius = lerp(currentRadius, star.targetRadius, 2.5 * deltaTime);
           star.star.scale(newRadius / currentRadius);
         }
-
-        star.star.position.y = star.y - scrollPosition;
       };
 
       const animateShootingStar = (deltaTime) => {
@@ -154,9 +139,9 @@ const Canvas = (props) => {
           shootingStarGraphic.position.y += shootingStar.directionY; 
 
           if (
-              shootingStar.x > paperScope2.view.bounds.width + 50 ||
+              shootingStar.x > paperScope1.view.bounds.width + 50 ||
               shootingStar.x < -50 ||
-              shootingStar.y > paperScope2.view.bounds.height + 50 ||
+              shootingStar.y > paperScope1.view.bounds.height + 50 ||
               shootingStar.y < -50
           ) {
               generateShootingStar();
@@ -183,12 +168,13 @@ const Canvas = (props) => {
       };
 
       window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
 
       fillSky();
 
       generateShootingStar();
 
-      let shootingStarGraphic = new paperScope2.Path.Circle(new paperScope2.Point(100, 100), 2);
+      let shootingStarGraphic = new paperScope1.Path.Circle(new paperScope1.Point(100, 100), 2);
       shootingStarGraphic.fillColor = "white";
 
       shootingStar.starDot = shootingStarGraphic;
@@ -198,16 +184,15 @@ const Canvas = (props) => {
         generateRandomStar();
       }
 
-      resizeCanvas();
       draw();
 
     return () => {
-      paperScope2.remove();
+      paperScope1.remove();
       window.removeEventListener("resize", resizeCanvas);
     };
   }, []);
 
-  return <div className="canvasContainer"><canvas ref={canvasRef} resize="true"></canvas></div>;
+  return <canvas ref={canvasRef} resize="true"></canvas>;
 };
 
 export default Canvas;
