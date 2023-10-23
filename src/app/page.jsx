@@ -7,7 +7,7 @@ import ResumeItem from './components/ResumeItem';
 import Education from './components/Education';
 import SkillIcon from './components/SkillIcon';
 import TopCanvas from './components/TopCanvas';
-import ThreeDCanvas from './components/ThreeDCanvas';
+import BottomCanvas from './components/BottomCanvas';
 
 export default function Home() {
   const scrollToElement = () => {
@@ -111,6 +111,7 @@ export default function Home() {
   ];
 
   return (
+    <div>
     <div className='bg'>
     <div className="home">
       <TopCanvas></TopCanvas>
@@ -154,9 +155,10 @@ export default function Home() {
         </a>
       </div>
     </div>
+    </div>
     <div className='bottomDiv'>
-        
-      </div>
+        <BottomCanvas></BottomCanvas>
+    </div>
     </div>
   )
 }
