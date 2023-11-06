@@ -112,7 +112,7 @@ export default function Home() {
 
   return (
     <div className='bg'>
-    <div className="home">
+    {/* <div className="home">
       <TopCanvas></TopCanvas>
       <div className='topContainer'>
         <Text size="small" text="Hi, my name is" className="hi"></Text>
@@ -153,7 +153,7 @@ export default function Home() {
           <button className='resumeButton'>📜 Download Resume PDF 📜</button>
         </a>
       </div>
-    </div>
+    </div> */}
     <div className='bottomDiv'>
         <ThreeDCanvas></ThreeDCanvas>
       </div>
