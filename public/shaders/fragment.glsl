@@ -1,4 +1,5 @@
 varying vec2 vUv;
+varying float ratio;
 
 float random (vec2 st) {
     return fract(sin(dot(st.xy,
@@ -37,31 +38,63 @@ vec4 backgroundGradient(float x, float y) {
     return col;
 }
 
-vec4 mountains(float x, float y, inout vec4 col) {
-    float n = pow(noise(vec2(x * 5.0, 0.0)), 2.0);
-    n += noise(vec2(x * 10.0, 0.0)) / 5.0;
-    n += noise(vec2(x * 75.0, 0.0)) / 25.0;
-    
-    if (y < n){
-        col = vec4(y*0.5, 0.5-y, 0.15, 1.0);
+vec4 sun(vec2 pos, inout vec4 col) {
+    vec2 center = vec2(0.5* ratio, 0.5) ;
+    vec2 adjustedPos = vec2(pos.x * ratio, pos.y);
+    float dist = distance(adjustedPos, center);
+
+    if (dist < 0.1) {
+        col = vec4(1.0, 0.8, 0.65, 1.0);
     }
 
-    // float n1 = noise(vec2((x + 0.25) * 5.0, 0.0)) / 3.0;
-    // n1 += noise(vec2((x + 0.25) * 10.0, 0.0)) / 3.0;
-    // n1 += noise(vec2((x + 0.25) * 75.0, 0.0)) / 25.0;
+    if (dist > 0.1 && dist < 1.0) {
+        col = mix(vec4(1.0, 0.45, 0.15, 1.0), col, pow((dist), 1.0));
+    }
+
+    return col;
+}
+
+vec4 mountains(vec2 pos, inout vec4 col) {
+    float n = pow(noise(vec2(pos.x * 5.0, 0.0)), 3.0) / 1.5;
+    n += noise(vec2(pos.x * 10.0, 0.0)) / 5.0;
+    n += noise(vec2(pos.x * 75.0, 0.0)) / 25.0;
     
-    // if (y < n1 - 0.15){
-    //     col = vec4(y, y, 0.15, 1.0);
-    // }
+    if (pos.y < n){
+        col = vec4(0.25, 0.25, 0.25, 1.0);
+
+        vec2 center = vec2(0.5* ratio, 0.5) ;
+        vec2 adjustedPos = vec2(pos.x * ratio, pos.y);
+        float dist = distance(adjustedPos, center);
+
+        if(dist < 1.0){
+            col = mix(vec4(1.0, 0.45, 0.15, 1.0), col, pow((dist), 1.0));
+        }
+    }
+
+    float n1 = pow(noise(vec2((pos.x) * 5.0, 0.5)), 2.0) / 1.5;
+    n1 += noise(vec2((pos.x) * 10.0, 0.5)) / 5.0;
+    n1 += noise(vec2((pos.x) * 75.0, 0.5)) / 25.0;
+    
+    if (pos.y < n1 - 0.15){
+        col = vec4(0.15, 0.15, 0.15, 1.0);
+
+        vec2 center = vec2(0.5* ratio, 0.5) ;
+        vec2 adjustedPos = vec2(pos.x * ratio, pos.y);
+        float dist = distance(adjustedPos, center);
+
+        if(dist < 0.5){
+            col = mix(vec4(1.0, 0.45, 0.15, 1.0), col, pow((dist) / 0.5, 1.0));
+        }
+    }
 
     return col;
 }
 
 void main() {
     vec4 col = vec4(0.0, 0.0, 0.0, 1.0);
-
     col = backgroundGradient(vUv.x, vUv.y);
-    col = mountains(vUv.x, vUv.y, col);
+    col = sun(vUv, col);
+    col = mountains(vUv, col);
 
     gl_FragColor = (col);
 }

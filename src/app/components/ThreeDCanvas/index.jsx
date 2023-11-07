@@ -13,7 +13,7 @@ const ThreeDCanvas = () => {
     camera.position.z = 200;
     const canvas = document.getElementById('canvas');
     const container = document.getElementById('three-container');
-    const renderer = new THREE.WebGLRenderer({ alpha: true, canvas, antialias:true });
+    const renderer = new THREE.WebGLRenderer({ alpha: true, canvas });
 
     const setRendererSize = () => {
       const width = container.clientWidth;
@@ -38,6 +38,9 @@ const ThreeDCanvas = () => {
         
         const geometry = new THREE.PlaneGeometry(2, 2);
         let material = new THREE.ShaderMaterial({
+          uniforms: {
+            u_aspectRatio: { value: window.innerWidth / window.innerHeight }
+          },
           vertexShader,
           fragmentShader
       });
