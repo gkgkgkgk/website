@@ -35,11 +35,13 @@ const ThreeDCanvas = () => {
 
         const vertexShaderFile = await fetch("shaders/vertex.glsl");
         const vertexShader = await vertexShaderFile.text();
-        
+        let vec = new THREE.Vector2( 0, 1 );
+        renderer.getSize(vec);
         const geometry = new THREE.PlaneGeometry(2, 2);
         let material = new THREE.ShaderMaterial({
           uniforms: {
-            u_aspectRatio: { value: window.innerWidth / window.innerHeight }
+            height: { value: vec.y },
+            width: { value: vec.x }
           },
           vertexShader,
           fragmentShader

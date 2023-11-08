@@ -1,8 +1,13 @@
 varying vec2 vUv;
-uniform float u_aspectRatio;
-out float ratio;
+uniform float height;
+uniform float width;
+
+out float _height;
+out float _width;
+
 void main() {
     vUv = uv;
     gl_Position = vec4(position, 1.0);
-    ratio = u_aspectRatio;
+    _height = height;
+    _width = width;
 }
