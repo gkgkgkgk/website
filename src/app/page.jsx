@@ -27,7 +27,7 @@ export default function Home() {
           "time": "Summer 2023",
           position: "Software Dev Engineer Intern - Amazon Connections",
           description: [
-            "Created a feature to collect a new type of data point for the Connections team regarding high profile employees at the company. The new feature was integrated and pushed into production. (Java, React, AWS)"
+            "Created a feature to collect a new type of data point for the Connections team to gather feedback from high profile employees at the company. The new feature was integrated into Amazon Connections, an application used internally at Amazon to collect feedback from employees, and pushed into production. (Java, React, AWS)"
           ]
         },
         {
@@ -88,7 +88,7 @@ export default function Home() {
           position: "Full Stack Developer Intern",
           description: [
             "Introduced and developed an agile workflow with continuous integration, deployment with Docker / Kubernetes support for application codebases. (Java / Node.js / Git / Jenkins / Docker / Kubernetes)",
-            "Developed a new launchpad for FENICS, an electronic trading platform. The new launchpad integrates real time market data, news, and streamlines the user experience when launching the trading applications. (Node.js / React.js)"
+            "Developed a new launchpad for FENICS, an electronic US treasuries trading platform. The new launchpad integrates real time market data, news, and streamlines the user experience when launching the trading applications. (Node.js / React.js)"
           ]
         },
         {
@@ -111,6 +111,7 @@ export default function Home() {
   ];
 
   return (
+    <div>
     <div className='bg'>
     <div className="home">
       <TopCanvas></TopCanvas>
@@ -154,8 +155,10 @@ export default function Home() {
         </a>
       </div>
     </div>
+    </div>
     <div className='bottomDiv'>
-        
+        <p className='renderedWith'>Rendered with GLSL</p>
+        <ThreeDCanvas></ThreeDCanvas>
       </div>
     </div>
   )

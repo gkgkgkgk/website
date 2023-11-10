@@ -6,8 +6,8 @@ const Education = (props) => {
     return (
     <div className="education">
         <CompanyName name="The Cooper Union for the Advancement of Science and Art" logoSrc="./logos/Cooper.png"></CompanyName>
-        <p className="degree">Bachelors in Electrical Engineering, Minor in Computer Science (May 2023)</p>
         <p className="degree">Masters in Electrical Engineering (Expected graduation: May 2024)</p>
+        <p className="degree">Bachelors in Electrical Engineering, Minor in Computer Science (May 2023)</p>
         <div>
             <ExpandableDescription title="View Relevant Coursework"
                 description={
