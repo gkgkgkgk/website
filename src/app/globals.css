@@ -185,6 +185,7 @@ ul {
 .bottomDiv {
     height: 100vh;
     background-color: (0deg,  rgb(84, 84, 209) 0%, rgba(12,29,37,1) 80%, rgba(0,0,0,1) 100%);
+    position: relative;
 }
 
 #three-container {
@@ -215,6 +216,17 @@ html, body {
 
 .linkCompany:hover {
     color: grey;
+}
+
+.renderedWith {
+    position: absolute;
+    z-index: 100;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+    color: grey;
+    font-size: 1rem;
+    font-style: italic;
 }
 
 /* DESKTOP CSS */
