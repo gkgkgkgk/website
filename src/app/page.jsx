@@ -143,6 +143,7 @@ export default function Home() {
         <div className='gap'></div>
         <Text size="medium" text="Projects and Links"></Text>
         <hr style={{width: "100%", margin: "20px"}}></hr>
+        <p>Blog for Personal Projects: (<a href="https://gkgkgkgk.github.io/">gkgkgkgk.github.io/</a>)</p>
         <p>PB*: Preference-Based Path-Planning for Autonomous Robots: (<a href="https://pathplanning.online/">https://pathplanning.online</a>)</p>
         <div className='smallGap'></div>
         <div className='links' style={{display: 'flex', justifyContent: "space-around"}}>
