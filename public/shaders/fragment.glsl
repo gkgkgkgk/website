@@ -1,42 +1,32 @@
 varying vec2 vUv;
 varying float _height;
 varying float _width;
-precision highp float;
 
-<<<<<<< Updated upstream
 float random (vec2 p) {
     p  = 50.0 * fract(p * 0.3183099 + vec2(0.1, 0.1));
     return fract(p.x * p.y);
 }
-=======
-vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
->>>>>>> Stashed changes
 
-float noise(vec2 v){
-  const vec4 C = vec4(0.211324865405187, 0.366025403784439,
-           -0.577350269189626, 0.024390243902439);
-  vec2 i  = floor(v + dot(v, C.yy) );
-  vec2 x0 = v -   i + dot(i, C.xx);
-  vec2 i1;
-  i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-  vec4 x12 = x0.xyxy + C.xxzz;
-  x12.xy -= i1;
-  i = mod(i, 289.0);
-  vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-  + i.x + vec3(0.0, i1.x, 1.0 ));
-  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy),
-    dot(x12.zw,x12.zw)), 0.0);
-  m = m*m ;
-  m = m*m ;
-  vec3 x = 2.0 * fract(p * C.www) - 1.0;
-  vec3 h = abs(x) - 0.5;
-  vec3 ox = floor(x + 0.5);
-  vec3 a0 = x - ox;
-  m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
-  vec3 g;
-  g.x  = a0.x  * x0.x  + h.x  * x0.y;
-  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-  return 130.0 * dot(m, g);
+float noise (in vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+
+    // Smooth Interpolation
+
+    // Cubic Hermine Curve.  Same as SmoothStep()
+    vec2 u = f*f*(3.0-2.0*f);
+    // u = smoothstep(0.,1.,f);
+
+    // Mix 4 coorners percentages
+    return mix(a, b, u.x) +
+            (c - a)* u.y * (1.0 - u.x) +
+            (d - b) * u.x * u.y;
 }
 
 vec4 backgroundGradient(float x, float y) {
@@ -200,7 +190,7 @@ vec4 mountains(vec2 pos, inout vec4 col) {
         nd = _width;
     }
 
-    float n = noise(vec2(pos.x/d * 16.0, 0.0)) / 2.0;
+    float n = noise(vec2(pos.x/d, 0.0)) / 2.0;
     n += noise(vec2(pos.x/d * 8.0, 0.0)) / 4.0;
     n += noise(vec2(pos.x/d * 16.0, 0.0)) / 8.0;
     n += noise(vec2(pos.x/d * 128.0, 0.0)) / 64.0;
@@ -214,10 +204,6 @@ vec4 mountains(vec2 pos, inout vec4 col) {
         if(dist < 250.0){
             col = mix(vec4(1.0, 0.45, 0.15, 1.0), col, pow((dist)/ 250.0, 1.0));
         }
-    }
-
-    if(pos.y < (_height/3.0)){
-        col = vec4(0.0, 0.0, 0.0, 1.0);
     }
 
     float n1 = noise(vec2(pos.x/d, 1.0)) / 2.0;
@@ -257,22 +243,6 @@ vec4 mountains(vec2 pos, inout vec4 col) {
     // col = trees(pos, col, h2, 2.0, 1.0);
 
     return col;
-}
-
-vec4 perlin(float x, float y){
-    float d = 0.0;
-    float nd = 0.0;
-
-    if(_width > _height){
-        d = _width;
-        nd = _height;
-    } else {
-        d = _height;
-        nd = _width;
-    }
-
-    highp float n = noise(vec2(x, y) / d * 32.0);
-    return vec4(n, n, n, 1.0);
 }
 
 void main() {
