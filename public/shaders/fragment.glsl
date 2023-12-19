@@ -2,10 +2,9 @@ varying vec2 vUv;
 varying float _height;
 varying float _width;
 
-float random (vec2 st) {
-    return fract(sin(dot(st.xy,
-                         vec2(12.9898,78.233)))*
-        43758.5453123);
+float random (vec2 p) {
+    p  = 50.0 * fract(p * 0.3183099 + vec2(0.1, 0.1));
+    return fract(p.x * p.y);
 }
 
 float noise (in vec2 st) {
@@ -55,6 +54,9 @@ vec4 sun(vec2 pos, inout vec4 col) {
     } else {
         if (dist < _height / 25.0) {
             col = vec4(1.0, 0.8, 0.65, 1.0);
+        }
+        if (dist > _height / 25.0 && dist < _height / 4.0) {
+            col = mix(vec4(1.0, 0.45, 0.05, 1.0), col, pow((dist) / (_height / 4.0), 1.0));
         }
     }
 
