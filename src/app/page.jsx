@@ -145,6 +145,7 @@ export default function Home() {
         <hr style={{width: "100%", margin: "20px"}}></hr>
         <p>Blog for Personal Projects: (<a href="https://gkgkgkgk.github.io/">gkgkgkgk.github.io/</a>)</p>
         <p>PB*: Preference-Based Path-Planning for Autonomous Robots: (<a href="https://pathplanning.online/">https://pathplanning.online</a>)</p>
+        <p><a href="/ApolloSim.pdf" target="_blank">ApolloSim: A Lidar Sensor with Calibrated Noise</a></p>
         <div className='smallGap'></div>
         <div className='links' style={{display: 'flex', justifyContent: "space-around"}}>
           <a href="https://www.github.com/gkgkgkgk"><SkillIcon img="logos/github.png"></SkillIcon></a>
