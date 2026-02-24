@@ -7,6 +7,7 @@ import WaveDivider from '@/components/WaveDivider';
 import MountainRange from '@/components/MountainRange';
 import Projects from '@/components/Projects';
 import DriftingClouds from '@/components/DriftingClouds';
+import ResumeViewer from '@/components/ResumeViewer';
 
 export default function Portfolio() {
   return (
@@ -29,6 +30,7 @@ export default function Portfolio() {
           />
           <p>I am currently a software engineer at BNY&apos;s AI Hub.</p>
         </div>
+        <ResumeViewer />
       </section>
 
       {/* Atmosphere Section */}

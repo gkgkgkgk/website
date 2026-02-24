@@ -38,6 +38,15 @@
             align-items: center;
             margin: 0;
             padding: 40px 0;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari */
         }
 
         /* The Paper Border - Visualizing 8.5" x 11" */
@@ -202,6 +211,14 @@
         #export-btn:hover {
             background-color: #0d635c;
             box-shadow: 0 6px 16px rgba(15, 118, 110, 0.35);
+        }
+
+        /* Mobile scaling so the 8.5in page fits small screens without cutoff */
+        @media screen and (max-width: 900px) {
+            body {
+                padding: 0;
+                overflow-x: hidden;
+            }
         }
 
         /* Print Overrides */
@@ -382,6 +399,24 @@
     </div>
 
     <button id="export-btn" onclick="window.print()">Export to PDF</button>
+
+    <script>
+        // Use CSS zoom (not transform) to scale the fixed-width page to fit
+        // the viewport. zoom affects layout, so no transform-origin headaches.
+        var PAGE_W = 816; // 8.5in @ 96dpi
+        function scalePage() {
+            var page = document.querySelector('.page');
+            if (!page) return;
+            if (window.innerWidth >= 900) {
+                page.style.zoom = '';
+                return;
+            }
+            var scale = window.innerWidth / PAGE_W;
+            page.style.zoom = String(scale);
+        }
+        scalePage();
+        window.addEventListener('resize', scalePage);
+    </script>
 
 </body>
 
