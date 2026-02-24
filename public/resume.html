@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Gabriel Kepets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-text: #1e293b;
+            --secondary-text: #64748b;
+            --accent: #0f766d;
+            --accent-light: #14b8a6;
+            --line-color: #e2e8f0;
+            --link-color: #0f1976;
+        }
+
+        /* Forces the browser to print in Portrait and Letter size */
+        @page {
+            size: letter portrait;
+            margin: 0;
+        }
+
+        /* Screen Styling (Workspace View) */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f1f5f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 40px 0;
+        }
+
+        /* The Paper Border - Visualizing 8.5" x 11" */
+        .page {
+            background: white;
+            width: 8.5in;
+            height: 11in;
+            /* Fixed height for visualization */
+            padding: 0.5in 0.65in;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 2px;
+            box-sizing: border-box;
+            color: var(--primary-text);
+            line-height: 1.4;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2.5px solid var(--accent);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Cinzel', serif;
+            font-size: 26pt;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .contact-info {
+            font-size: 9.5pt;
+            color: var(--secondary-text);
+            margin-top: 6px;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-info .sep {
+            margin: 0 6px;
+            color: var(--line-color);
+        }
+
+        section {
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 11pt;
+            font-weight: 700;
+            border-bottom: 1.5px solid var(--accent);
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            letter-spacing: 1.5px;
+        }
+
+        .job-header,
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 10.5pt;
+        }
+
+        .job-sub {
+            display: flex;
+            justify-content: space-between;
+            font-style: italic;
+            font-size: 9.5pt;
+            color: var(--secondary-text);
+            margin-bottom: 4px;
+        }
+
+        ul {
+            margin: 4px 0 8px 18px;
+            padding: 0;
+            font-size: 9.5pt;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .project-link svg {
+            width: 11px;
+            height: 11px;
+            fill: none;
+            stroke: var(--secondary-text);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.2s;
+        }
+
+        .project-link:hover svg {
+            stroke: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            font-size: 9.5pt;
+            gap: 4px;
+        }
+
+        .skills-grid strong {
+            color: var(--accent);
+        }
+
+        p {
+            margin: 4px 0 8px 18px;
+            padding: 0;
+            font-size: 9.5pt;
+        }
+
+        /* Export Button Styling */
+        #export-btn {
+            margin-top: 25px;
+            padding: 10px 24px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+
+        #export-btn:hover {
+            background-color: #0d635c;
+            box-shadow: 0 6px 16px rgba(15, 118, 110, 0.35);
+        }
+
+        /* Print Overrides */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .page {
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                width: 8.5in;
+                height: 11in;
+                margin: 0;
+                padding: 0.5in 0.65in;
+            }
+
+            .contact-info a {
+                color: var(--secondary-text);
+            }
+
+            #export-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+        <header>
+            <h1>Gabriel (Gavri) Kepets</h1>
+            <div class="contact-info">
+                <a href="mailto:gkepets@gmail.com">gkepets@gmail.com</a>
+                <span class="sep">|</span>
+                201-286-3988
+                <span class="sep">|</span>
+                <a href="https://gavrikepets.com" target="_blank">gavrikepets.com</a>
+                <span class="sep">|</span>
+                <a href="https://github.com/gkgkgkgk" target="_blank">github.com/gkgkgkgk</a>
+            </div>
+        </header>
+
+        <section id="experience">
+            <h2>Work Experience</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <span>BNY (Bank of New York Mellon)</span>
+                    <span>July 2024 – Present</span>
+                </div>
+                <div class="job-sub">
+                    <span>Senior Associate, Full-Stack Engineer – AI Hub Core Platform Team</span>
+                    <span>Pittsburgh, PA</span>
+                </div>
+                <ul>
+                    <li>Developed and maintained BNY's AI
+                        platform, "Eliza". Eliza enables employees across all silos at BNY to build
+                        and deploy AI agents, explore data, perform tasks, and run pipelines.</li>
+                    <li>Helped develop and launch "Data Mesh", which wrangles data from across the bank and makes it
+                        available to be used with AI agents.</li>
+                    <li>In addition to platform work, worked on various AI-related projects for different teams
+                        across the bank.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span>Amazon</span>
+                    <span>Summer 2022, 2023</span>
+                </div>
+                <div class="job-sub">
+                    <span>Software Development Engineer Intern - Connections</span>
+                    <span>Seattle, WA</span>
+                </div>
+                <ul>
+                    <li>Deployed production features for Amazon Connections using Java and AWS.</li>
+                    <li>Developed real-time campaign health dashboards for internal teams.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span>Autofleet</span>
+                    <span>2018 – 2019</span>
+                </div>
+                <div class="job-sub">
+                    <span>Full Stack Developer</span>
+                    <span>Tel Aviv, Israel</span>
+                </div>
+                <ul>
+                    <li>Built integration adapters for global ride-sharing pilots.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="edu-header">
+                <span>The Cooper Union for the Advancement of Science and Art</span>
+                <span>New York, NY</span>
+            </div>
+            <div class="job-sub">
+                <span>B.S. in Electrical Engineering &amp; Minor in Computer Science</span>
+                <span>Graduated 2023</span>
+            </div>
+            <div class="job-sub">
+                <span>M.S. in Electrical Engineering</span>
+                <span>Graduated 2024</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="job-header">
+                <span>ApolloSim: A Lidar Simulator with Calibrated Sensor Noise <a class="project-link"
+                        href="https://www.proquest.com/docview/3054139481/8B21866B967E4DFBPQ/2" target="_blank"
+                        title="View project"><svg viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg></a></span>
+            </div>
+            <p>As a Master's thesis project, I created a LIDAR simulator in Odin/OpenGL featuring calibrated sensor
+                noise models.</p>
+            <div class="job-header">
+                <span>Gnocchi <a class="project-link" href="https://github.com/gkgkgkgk/gnocchi" target="_blank"
+                        title="View project"><svg viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg></a></span>
+            </div>
+            <p>An AI-Powered recipe app that can generate recipes based on user's dietary restrictions,
+                allergies, and available ingredients.</p>
+            <div class="job-header">
+                <span>JourneyAI <a class="project-link" href="https://github.com/gkgkgkgk/JourneyAI" target="_blank"
+                        title="View project"><svg viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg></a></span>
+            </div>
+            <p>An AI-powered tool to help organize, plan, and write papers and books. Sources are indexed so that the
+                LLM can retrieve relevant information to do fact-checking, contradiction detection, and provide inline
+                citations.</p>
+            <div class="job-header">
+                <span>PB*: Preference-Based Path-Planning for Autonomous Robots <a class="project-link"
+                        href="https://pathplanning.online/" target="_blank" title="View project"><svg
+                            viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg></a></span>
+            </div>
+            <p>Developed a path-planning framework that can dynamically adjust its
+                heuristics based on user preferences.</p>
+
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <strong>Languages:</strong>
+                <span>Java, Python, JavaScript/TypeScript, Golang, Odin</span>
+                <strong>Tools:</strong>
+                <span>Node.js, React, Spring, Docker, Kubernetes, AWS</span>
+                <strong>AI/ML:</strong>
+                <span>RAG, Agentic Systems, TensorFlow, AI-Assisted Development (Antigravity, Claude Code, etc.)</span>
+                <strong>Interests:</strong>
+                <span>Soccer, Woodworking, Hiking, Piano, Cooking, Home Automation</span>
+            </div>
+        </section>
+    </div>
+
+    <button id="export-btn" onclick="window.print()">Export to PDF</button>
+
+</body>
+
+</html>

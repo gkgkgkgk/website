@@ -1,0 +1,79 @@
+[
+    {
+        "id": 1,
+        "title": "Senior Associate Full-Stack Engineer",
+        "company": "BNY",
+        "companyUrl": "https://www.bny.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/BNY_logo_2024.svg/3840px-BNY_logo_2024.svg.png",
+        "location": "Pittsburgh, PA",
+        "current": true,
+        "periods": [
+            {
+                "date": "Jun 2024 - Present",
+                "role": "AI Hub - Core Platform Team",
+                "shortDescription": "Working on BNY's AI platform, Eliza, and other AI projects as part of the core platform team.",
+                "description": "Part of the core platform team at AI HUB, where I work on BNY's AI platform, Eliza, as well as other AI projects. Developing and maintaining full-stack solutions for enterprise AI applications."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Software Dev Engineer Intern",
+        "company": "Amazon",
+        "companyUrl": "https://www.amazon.com",
+        "logo": "https://github.com/gkgkgkgk/website/blob/main/public/logos/amazon.png?raw=true",
+        "location": "Seattle, WA",
+        "periods": [
+            {
+                "date": "Summer 2023",
+                "role": "Amazon Connections",
+                "shortDescription": "Built a new feedback collection feature for high-profile employees and pushed it to production.",
+                "description": "Created a feature to collect a new type of data point for the Connections team to gather feedback from high profile employees at the company. The new feature was integrated into Amazon Connections, an application used internally at Amazon to collect feedback from employees, and pushed into production. (Java, React, AWS)"
+            },
+            {
+                "date": "Summer 2022",
+                "role": "Amazon Connections",
+                "shortDescription": "Developed metrics tools for internal research campaigns on the core platform.",
+                "description": "Worked to create a component for the core Amazon Connections platform. Developed a tool to expose metrics that indicate the progress and health of internal research campaigns. (Java, React, AWS)"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Program Director & Instructor",
+        "company": "Bluestamp Engineering",
+        "companyUrl": "https://www.bluestampengineering.com",
+        "logo": "https://github.com/gkgkgkgk/website/blob/main/public/logos/bse.png?raw=true",
+        "location": "Remote",
+        "periods": [
+            {
+                "date": "Summer 2021 - Spring 2022",
+                "role": "Program Director",
+                "shortDescription": "Coordinated enrollment and equipment for 125 students while managing a team of 11 instructors.",
+                "description": "Coordinated enrollment, procurement and distribution of equipment for 125 students. Managed a team of 11 instructors, overseeing program operations and ensuring quality educational experiences."
+            },
+            {
+                "date": "Summer 2020",
+                "role": "Instructor",
+                "shortDescription": "Guided students through electrical engineering and software development projects.",
+                "description": "Guided multiple classes of students (approximately four students per class) through electrical engineering and software development projects. Taught students and managed projects involving numerous technologies such as Arduino, Raspberry Pi, Unity3D, and more."
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Full Stack Developer Co-Op",
+        "company": "Autofleet",
+        "companyUrl": "https://www.autofleet.io",
+        "logo": "https://github.com/gkgkgkgk/website/blob/main/public/logos/autofleet.png?raw=true",
+        "location": "Tel Aviv, Israel",
+        "periods": [
+            {
+                "date": "October 2018 - April 2019",
+                "role": "Full Stack Developer",
+                "shortDescription": "Integrated Autofleet services with a major ride-sharing company for pilot launch.",
+                "description": "Developed an adapter and improved changes to the core codebase to allow integration between Autofleet services and a large ride sharing company in preparation for a pilot. (Node.js / Kubernetes / MySQL / RabbitMQ). Worked closely with the CEO, CTO as well as the other developers to prepare the company for product launch."
+            }
+        ]
+    }
+]

@@ -1,0 +1,787 @@
+:root {
+  --space-bg: #050510;
+  --space-accent: #1e1e3f;
+
+  --sky-top: #2b32b2;
+  --sky-bottom: #1488cc;
+
+  --mountain-sky: #87CEEB;
+  --mountain-rock: #2d3436;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  /* We use the variable from layout.tsx if available, else sans-serif */
+  font-family: var(--font-geist-sans), sans-serif;
+  color: white;
+  background-color: #000000;
+  overscroll-behavior-y: none;
+  scroll-behavior: smooth;
+  /* Hide scrollbar to prevent layout shifts */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+/* Hide scrollbar for Chrome/Safari/Webkit */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Section Containers */
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 1. Space Section */
+.section-space {
+  background: linear-gradient(to bottom, #000000 0%, #0b1026 100%);
+  color: #fff;
+}
+
+/* 2. Atmosphere Section */
+/* Seamlessly continues from #0b1026 */
+.section-atmosphere {
+  background: linear-gradient(to bottom, #0b1026 0%, #2b32b2 40%, #1488cc 100%);
+}
+
+/* 3. Mountain/Earth Section */
+/* Seamlessly continues from #1488cc */
+.section-mountains {
+  background: linear-gradient(to bottom, #1488cc 0%, #87CEEB 30%, #f0f2f0 100%);
+  color: #1a1a1a;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+.content-wrapper.wide {
+  max-width: 1400px;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  margin: 1.5rem auto;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  display: block;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.current-section {
+  display: flex !important;
+  justify-content: center;
+}
+
+.current-section .experience-card {
+  max-width: 450px;
+}
+
+.experience-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 3rem auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+.experience-divider span {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #a0d8ff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.experience-divider .line {
+  height: 1px;
+  background: linear-gradient(to right, rgba(160, 216, 255, 0.5), transparent);
+  flex-grow: 1;
+}
+
+.experience-divider .line:first-child {
+  background: linear-gradient(to left, rgba(160, 216, 255, 0.5), transparent);
+}
+
+
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.experience-card.current-job {
+  background: rgba(160, 216, 255, 0.2);
+  border: 2px solid rgba(160, 216, 255, 0.6);
+  box-shadow: 0 0 30px rgba(160, 216, 255, 0.3), 0 0 15px rgba(160, 216, 255, 0.2) inset;
+}
+
+.experience-card.current-job:hover {
+  background: rgba(160, 216, 255, 0.25);
+  border-color: rgba(160, 216, 255, 0.8);
+  box-shadow: 0 0 40px rgba(160, 216, 255, 0.4), 0 0 20px rgba(160, 216, 255, 0.3) inset;
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: none;
+  text-align: center;
+}
+
+.company-logo {
+  border-radius: 0.5rem;
+  object-fit: contain;
+}
+
+.experience-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.experience-card h3 a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.experience-card h3 a:hover {
+  color: #a0d8ff;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+}
+
+.periods {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.period {
+  padding: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.period-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+.date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #a0d8ff;
+}
+
+.role {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.experience-card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.learn-more-btn {
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  background: rgba(160, 216, 255, 0.15);
+  border: 1px solid rgba(160, 216, 255, 0.3);
+  border-radius: 0.5rem;
+  color: #a0d8ff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+
+
+/* Fancy Divider */
+.section-divider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.section-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.section-divider .shape-fill {
+  fill: #1488cc;
+  /* Matches the bottom of the section above */
+}
+
+/* Education Section Re-design */
+.education-section {
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.education-link {
+  color: #c0f6ff;
+}
+
+.university-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.university-header h3 {
+  font-size: 1.8rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.university-header h3 a {
+  text-decoration: none;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+.university-header h3 a:hover {
+  color: #2b32b2;
+}
+
+.university-header .location {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #daf7ff;
+  /* Dark grey */
+}
+
+.degrees-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.degree-card {
+  /* Paper Background */
+  background: radial-gradient(circle at center, #fffef0 0%, #fdfbf7 100%);
+
+  /* Black Frame */
+  border: 16px solid #121212;
+  border-radius: 2px;
+
+  /* Inner Gold Trim (Mat) + Vignette + Drop Shadow */
+  box-shadow:
+    inset 0 0 0 2px #d4af37,
+    /* Gold rim touching the black frame */
+    inset 0 0 20px rgba(0, 0, 0, 0.05),
+    /* Subtle inner shadow/aging */
+    0 10px 20px rgba(0, 0, 0, 0.5);
+  /* Deep drop shadow */
+
+  padding: 3rem 2rem;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  color: #1a1a1a;
+  /* Dark text for paper */
+  position: relative;
+  overflow: hidden;
+  /* For watermark */
+}
+
+/* Watermark / Seal effect suggestion */
+.degree-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Seal_of_Cooper_Union.svg/1200px-Seal_of_Cooper_Union.svg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.04;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.degree-card:hover {
+  transform: translateY(-5px);
+  /* Brighter gold on hover and deeper shadow */
+  box-shadow:
+    inset 0 0 0 2px #f1c40f,
+    inset 0 0 20px rgba(0, 0, 0, 0.05),
+    0 20px 20px rgba(0, 0, 0, 0.6);
+}
+
+.degree-info h4 {
+  font-family: var(--font-cinzel), serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  color: #0b1026;
+  /* Deep navy like ink */
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.degree-info .minor {
+  display: block;
+  font-family: var(--font-cinzel), serif;
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.degree-info .date {
+  display: block;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #8b5cf6;
+  /* A nice purple/blue ink for the date stamp look */
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.degree-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  background: #0b1026;
+  /* Dark navy wax seal color */
+  color: #fff;
+  /* Gold text */
+  border: 1px solid #d4af37;
+  border-radius: 2px;
+  text-decoration: none;
+  font-family: var(--font-cinzel), serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+
+.action-btn:hover {
+  background: #1a237e;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal Styles */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(43, 50, 178, 0.95) 0%, rgba(20, 136, 204, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  pointer-events: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.modal-date {
+  font-size: 0.9rem;
+  color: #a0d8ff;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.modal-role {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.modal-body {
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+}
+
+.modal-body p {
+  font-size: 1rem;
+  margin: 0;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+h2 {
+  font-family: var(--font-cinzel), serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
+
+/* Satellite Animation */
+@keyframes float-satellite {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.satellite-icon {
+  animation: float-satellite 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(160, 216, 255, 0.6));
+  z-index: 10;
+  /* Ensure it sits above background elements */
+}
+
+/* ========== Project Cards ========== */
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 1.5rem 0 4rem;
+  position: relative;
+  z-index: 5;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #2d3748;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    0 4px 8px rgba(0, 0, 0, 0.06);
+  text-decoration: none;
+}
+
+/* Image placeholder area */
+.project-card-img {
+  position: relative;
+  height: 140px;
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.75rem;
+}
+
+.project-card-year {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  letter-spacing: 0.3px;
+}
+
+.project-card-body {
+  padding: 1.2rem 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-card h3 {
+  font-family: var(--font-cinzel), serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 0.5rem 0;
+}
+
+.project-card p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #4a5568;
+  margin: 0 0 0.8rem 0;
+  max-width: none;
+  text-align: left;
+  flex: 1;
+}
+
+.project-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8;
+  opacity: 0;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.project-card:hover .project-card-link {
+  opacity: 1;
+  color: #0f766e;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .project-card-img {
+    height: 110px;
+  }
+
+  .section-mountains .content-wrapper {
+    padding-bottom: 18vh !important;
+  }
+}
+
+/* ========== Drifting Background Clouds ========== */
+
+.drifting-cloud {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  animation: cloud-drift linear infinite;
+  will-change: transform;
+}
+
+@keyframes cloud-drift {
+  0% {
+    left: -250px;
+  }
+  100% {
+    left: calc(100% + 50px);
+  }
+}
+
+.drift-body {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 40%;
+  background: white;
+  border-radius: 20px;
+}
+
+.drift-puff {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+}
+
+.drift-p1 {
+  width: 70px;
+  height: 70px;
+  bottom: 10px;
+  left: 15%;
+}
+
+.drift-p2 {
+  width: 90px;
+  height: 85px;
+  bottom: 12px;
+  left: 35%;
+}
+
+.drift-p3 {
+  width: 60px;
+  height: 60px;
+  bottom: 8px;
+  right: 18%;
+}
